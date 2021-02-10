@@ -1,0 +1,15 @@
+{
+  "rules": {
+      "eqeqeq": "off",
+      "curly": "error",
+      "quotes": ["error", "double"],
+      "semi": [2, "always"]
+  },
+  "env": {
+    "es6": true
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": true
+  }
+}
