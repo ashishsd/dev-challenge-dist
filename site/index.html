@@ -1,16 +1,19 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <!--
-    This is the library that provides websocket streaming pub/sub
-    The dev serverver is serving the html and javascript, but it also provides updating fx data on /fx/prices.
-     -->
-    <script src="stomp.js"></script>
-    <script src="sparkline.js"></script>
+    <meta charset="UTF-8">
+    <meta name="description" content="Stock Market Dev Challange">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <title>Stock Market Dev Challange</title>
+    <meta name="author" content="HCL Code Challange">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="stomp.js"></script>
+    <script type="text/javascript" src="sparkline.js"></script>
 </head>
 <body>
     <!-- main section -->
     <section class="content">
-        <h1>Updating Table</h1>
+        <h1>Current Market Status</h1>
         <table id="dataTable">
             <tr>
                 <th>Name</th>
@@ -24,6 +27,6 @@
             </tr>
         </table>
     </section>
-    <script src="bundle.js"></script>
+    <script type="text/javascript" src="bundle.js"></script>
 </body>
 </html>

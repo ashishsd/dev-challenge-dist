@@ -52,34 +52,34 @@ function createCol(row, value) {
  */
 function updateStockMarketTable(stockDetails, liveMarketData) {
   const dataTable = document.getElementById("dataTable");
-  const row = document.getElementById(stockDetails.name);
-  const sparklineArr = [];
+  const existingStockRow = document.getElementById(stockDetails.name);
+  const stockGraphSpraks = [];
   liveMarketData[stockDetails.name].forEach((data) => {
-    sparklineArr.push(data.bestBid+ data.bestAsk/2);
+    stockGraphSpraks.push(data.bestBid+ data.bestAsk/2);
   });
   const sparks = document.createElement("span");
-  Sparkline.draw(sparks, sparklineArr);
-  if(row) {
-    row.cells[1].innerHTML= stockDetails.bestBid;
-    row.cells[2].innerHTML= stockDetails.bestAsk;
-    row.cells[5].innerHTML= stockDetails.lastChangeAsk;
-    row.cells[6].innerHTML= stockDetails.lastChangeBid;
-    row.cells[7].innerHTML = "";
-    row.cells[7].appendChild(sparks);
-  } else {
-    const row = dataTable.insertRow();
-    row.id = stockDetails.name;
-    createCol(row, stockDetails.name);
-    createCol(row, stockDetails.bestBid);
-    createCol(row, stockDetails.bestAsk);
-    createCol(row, stockDetails.openBid);
-    createCol(row, stockDetails.openAsk);
-    createCol(row, stockDetails.lastChangeAsk);
-    createCol(row, stockDetails.lastChangeBid);
-    const sparklineTd = document.createElement("td");
-    sparklineTd.appendChild(sparks);
-    row.appendChild(sparklineTd);
+  Sparkline.draw(sparks, stockGraphSpraks);
+  if(existingStockRow) {
+    existingStockRow.cells[1].innerHTML= stockDetails.bestBid;
+    existingStockRow.cells[2].innerHTML= stockDetails.bestAsk;
+    existingStockRow.cells[5].innerHTML= stockDetails.lastChangeAsk;
+    existingStockRow.cells[6].innerHTML= stockDetails.lastChangeBid;
+    existingStockRow.cells[7].innerHTML = "";
+    existingStockRow.cells[7].appendChild(sparks);
+    return;
   }
+  const newStockRow = dataTable.insertRow();
+  newStockRow.id = stockDetails.name;
+  createCol(newStockRow, stockDetails.name);
+  createCol(newStockRow, stockDetails.bestBid);
+  createCol(newStockRow, stockDetails.bestAsk);
+  createCol(newStockRow, stockDetails.openBid);
+  createCol(newStockRow, stockDetails.openAsk);
+  createCol(newStockRow, stockDetails.lastChangeAsk);
+  createCol(newStockRow, stockDetails.lastChangeBid);
+  const stockGraph = document.createElement("td");
+  stockGraph.appendChild(sparks);
+  newStockRow.appendChild(stockGraph);
 }
 
 module.exports = {
